@@ -30,6 +30,16 @@ public class MatrizAdyacenciaTest {
 				assertTrue(matrizAdyacencia.existeElemento(i, j));
 			}
 		}
-		
+	}
+	
+	@Test
+	public void agregarElementoSimetriaTest() {
+		for (int i = 0; i < tamanioMatriz; i++) {
+			for (int j = 0; j < tamanioMatriz; j++) {
+				matrizAdyacencia.agregarElemento(i, j);
+				assertTrue(matrizAdyacencia.existeElemento(i, j));
+				assertTrue(matrizAdyacencia.existeElemento(j, i));
+			}
+		}
 	}
 }
