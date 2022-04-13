@@ -31,6 +31,5 @@ public class MatrizAdyacenciaTest {
 			}
 		}
 		
-		//commit de prueba
 	}
 }
