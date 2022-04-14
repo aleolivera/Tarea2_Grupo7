@@ -1,8 +1,9 @@
 package packageTest;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.Assert.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -114,6 +115,21 @@ public class MatrizAdyacenciaTest {
 	}
 	
 	
+	/*g. Crear un método llamado agregarElementoFilaNegativaTest
+	que verifique que, si uno quiere agregar un elemento en una fila
+	negativa, éste arroje una excepción.*/
 	
+	
+	@Test
+	public void agregarElementoFilaNegativaTest() {
+		int filaElemento = -1;
+		int columnaElemento = 0;
+		
+		ArrayIndexOutOfBoundsException exception = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+			matrizAdyacencia.agregarElemento(filaElemento, columnaElemento);
+        });
+		
+		assertTrue(exception == null, "No se pueden ingresar numeros negativos");
+	}
 	
 }
