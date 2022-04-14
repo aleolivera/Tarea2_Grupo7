@@ -125,13 +125,11 @@ public class MatrizAdyacenciaTest {
 		int filaElemento = -1;
 		int columnaElemento = 0;
 		
-		if(filaElemento<0 || columnaElemento<0){
 		ArrayIndexOutOfBoundsException exception = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
 			matrizAdyacencia.agregarElemento(filaElemento, columnaElemento);
         });
 		
 		assertTrue(exception == null, "No se pueden ingresar numeros negativos");
-		}
 	}
 	
 }
