@@ -1,5 +1,6 @@
 package packageTest;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -27,11 +28,10 @@ public class MatrizAdyacenciaTest {
 	
 	@Test
 	public void agregarElementoTest() {
-		int posicionColuma=1;
-		int posicionFila=2;
-		matrizAdyacencia.agregarElemento(posicionFila, posicionColuma);
-		assertTrue(matrizAdyacencia.existeElemento(posicionFila, posicionColuma));
-		assertTrue(matrizAdyacencia.existeElemento(posicionColuma, posicionFila));
+	
+		matrizAdyacencia.agregarElemento(2,1);
+		assertTrue(matrizAdyacencia.existeElemento(2, 1));
+		assertTrue(matrizAdyacencia.existeElemento(1, 2));
 	}
 	
 	
@@ -51,6 +51,29 @@ public class MatrizAdyacenciaTest {
 		}
 	}
 	
+	/*c. Crear un método llamado eliminarElementoTest, que verifique que
+	luego de eliminar un elemento este elemento no exista dentro de la
+	matriz*/
+	
+	@Test
+	public void eliminarElementoTest(){
+		
+		 matrizAdyacencia.eliminarElemento(2, 1);
+		 assertFalse(matrizAdyacencia.existeElemento(2, 1));	 		
+	}
+	
+	
+	/*d. Crear un método llamado eliminarElementoSimetricoTest, que
+	verifique que luego de eliminar un elemento también elimine su simétrico.
+	Ejemplo, si elimino el elemento de la posición [2,3], verificar que se haya
+	eliminado el elemento [3,2]*/
+	
+	@Test	
+	public void eliminarElementoSimetricoTest(){	
+		 matrizAdyacencia.eliminarElemento(2, 1);	 
+		 assertFalse(matrizAdyacencia.existeElemento(2, 1));
+		 assertFalse(matrizAdyacencia.existeElemento(1, 2));	 		
+	}
 	
 	/*f. Crear un método llamado existenTodosLosElementoTest Verificar que
 	si se completan todos las posiciones de la matriz, todos estos elementos
@@ -68,5 +91,8 @@ public class MatrizAdyacenciaTest {
 			}
 		}
 	}
+	
+	
+	
 	
 }
