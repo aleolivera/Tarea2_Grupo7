@@ -82,20 +82,16 @@ public class MatrizAdyacenciaTest {
 	
 	@Test
 	public void contarRelacionesTest() {
-		int cantElementosMetodo = matrizAdyacencia.getCantidadElementos();
 		int cantRelacionesEsperadas = 0;
-		// Cargo la matriz y cuento simetrías esperadas
 		for (int i = 0; i < tamanioMatriz; i++) { 
 			for (int j = 0; j < tamanioMatriz; j++) {
 				matrizAdyacencia.agregarElemento(i, j);
-				if (i != j) {
+				if (i <= j) {
 					cantRelacionesEsperadas++;
-				}
+				} 
 			}
 		}
-
-		cantRelacionesEsperadas /= 2; // Divido por 2, ya que conté las relaciones en espejo
-		cantRelacionesEsperadas += tamanioMatriz; // Sumo las relaciones que están en la diagonal
+		int cantElementosMetodo = matrizAdyacencia.getCantidadElementos();
 		assertEquals(cantRelacionesEsperadas, cantElementosMetodo);
 	}
 	
