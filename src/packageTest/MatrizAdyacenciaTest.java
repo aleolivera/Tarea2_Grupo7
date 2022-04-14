@@ -63,6 +63,8 @@ public class MatrizAdyacenciaTest {
 			for (int j = 0; j < tamanioMatriz; j++) {
 				matrizAdyacencia.agregarElemento(i, j);
 				assertTrue(matrizAdyacencia.existeElemento(i, j));
+				assertTrue(matrizAdyacencia.existeElemento(j, i));
+			
 			}
 		}
 	}
