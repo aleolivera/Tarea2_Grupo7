@@ -1,5 +1,6 @@
 package packageTest;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -9,8 +10,7 @@ import org.junit.jupiter.api.Test;
 import frgp.utn.edu.ar.main.MatrizAdyacencia;
 
 public class MatrizAdyacenciaTest {
-	
-	final byte tamanioMatriz = 4; // Acá elegimos el tamaño 4x4, pero se puede modificar
+	final byte tamanioMatriz = 3; // Tamaño mínimo de Matriz 3x3
 	MatrizAdyacencia matrizAdyacencia = new MatrizAdyacencia(tamanioMatriz);
 	
 	@BeforeEach
@@ -74,6 +74,31 @@ public class MatrizAdyacenciaTest {
 		 assertFalse(matrizAdyacencia.existeElemento(2, 1));
 		 assertFalse(matrizAdyacencia.existeElemento(1, 2));	 		
 	}
+	
+//	e. Crear un método llamado contarRelacionesTest que verifique que el 
+//	método getCantidadRelaciones de la clase MatrizAdyacencia. Ejemplo:
+//	Si agregamos tres elementos [2,3] [1,4] y [1,2] … hay un total de tres 
+//	relaciones.
+	
+	@Test
+	public void contarRelacionesTest() {
+		int cantElementosMetodo = matrizAdyacencia.getCantidadElementos();
+		int cantRelacionesEsperadas = 0;
+		// Cargo la matriz y cuento simetrías esperadas
+		for (int i = 0; i < tamanioMatriz; i++) { 
+			for (int j = 0; j < tamanioMatriz; j++) {
+				matrizAdyacencia.agregarElemento(i, j);
+				if (i != j) {
+					cantRelacionesEsperadas++;
+				}
+			}
+		}
+
+		cantRelacionesEsperadas /= 2; // Divido por 2, ya que conté las relaciones en espejo
+		cantRelacionesEsperadas += tamanioMatriz; // Sumo las relaciones que están en la diagonal
+		assertEquals(cantRelacionesEsperadas, cantElementosMetodo);
+	}
+	
 	
 	/*f. Crear un método llamado existenTodosLosElementoTest Verificar que
 	si se completan todos las posiciones de la matriz, todos estos elementos
