@@ -83,7 +83,6 @@ public class MatrizAdyacenciaTest {
 	@Test
 	public void contarRelacionesTest() {
 		int cantRelacionesEsperadas = 0;
-		// Cargo la matriz y cuento simetrías esperadas
 		for (int i = 0; i < tamanioMatriz; i++) { 
 			for (int j = 0; j < tamanioMatriz; j++) {
 				matrizAdyacencia.agregarElemento(i, j);
