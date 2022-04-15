@@ -131,5 +131,18 @@ public class MatrizAdyacenciaTest {
 		
 		assertTrue(exception == null, "No se pueden ingresar numeros negativos");
 	}
+	@Test
+	public void agregarElementoColumnaNegativaTest(){
+		ArrayIndexOutOfBoundsException e= assertThrows(ArrayIndexOutOfBoundsException.class, ()-> matrizAdyacencia.agregarElemento(1, -1));
+		assertTrue(e.getClass().toString().contains("ArrayIndexOutOfBoundsException"),"Excepcion no encontrada");
+		
+	}
+	@Test
+	public void agregarElementoFueraRangoTest(){
+		ArrayIndexOutOfBoundsException e= assertThrows(ArrayIndexOutOfBoundsException.class, ()-> matrizAdyacencia.agregarElemento(tamanioMatriz, tamanioMatriz));
+		assertTrue(e.getClass().toString().contains("ArrayIndexOutOfBoundsException"),"Excepcion no encontrada");
+		
+	}
+	
 	
 }
