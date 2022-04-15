@@ -119,29 +119,22 @@ public class MatrizAdyacenciaTest {
 	que verifique que, si uno quiere agregar un elemento en una fila
 	negativa, éste arroje una excepción.*/
 	
-	
 	@Test
 	public void agregarElementoFilaNegativaTest() {
-		int filaElemento = -1;
-		int columnaElemento = 0;
-		
-		ArrayIndexOutOfBoundsException exception = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-			matrizAdyacencia.agregarElemento(filaElemento, columnaElemento);
-        });
-		
-		assertTrue(exception == null, "No se pueden ingresar numeros negativos");
+		assertThrows(ArrayIndexOutOfBoundsException.class, () -> matrizAdyacencia.agregarElemento(-1, 0));
 	}
+	
+	//h
 	@Test
 	public void agregarElementoColumnaNegativaTest(){
-		ArrayIndexOutOfBoundsException e= assertThrows(ArrayIndexOutOfBoundsException.class, ()-> matrizAdyacencia.agregarElemento(1, -1));
-		assertTrue(e.getClass().toString().contains("ArrayIndexOutOfBoundsException"),"Excepcion no encontrada");
-		
+		assertThrows(ArrayIndexOutOfBoundsException.class, ()-> matrizAdyacencia.agregarElemento(1, -1));
 	}
+	
+		
+	//i	
 	@Test
 	public void agregarElementoFueraRangoTest(){
-		ArrayIndexOutOfBoundsException e= assertThrows(ArrayIndexOutOfBoundsException.class, ()-> matrizAdyacencia.agregarElemento(tamanioMatriz, tamanioMatriz));
-		assertTrue(e.getClass().toString().contains("ArrayIndexOutOfBoundsException"),"Excepcion no encontrada");
-		
+		assertThrows(ArrayIndexOutOfBoundsException.class, ()-> matrizAdyacencia.agregarElemento(tamanioMatriz, tamanioMatriz));
 	}
 	
 	
