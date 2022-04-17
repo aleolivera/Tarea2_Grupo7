@@ -83,17 +83,12 @@ public class MatrizAdyacenciaTest {
 	
 	@Test
 	public void contarRelacionesTest() {
-		int cantRelacionesEsperadas = 0;
-		for (int i = 0; i < tamanioMatriz; i++) { 
-			for (int j = 0; j < tamanioMatriz; j++) {
-				matrizAdyacencia.agregarElemento(i, j);
-				if (i <= j) {
-					cantRelacionesEsperadas++;
-				} 
-			}
-		}
-		int cantElementosMetodo = matrizAdyacencia.getCantidadElementos();
-		assertEquals(cantRelacionesEsperadas, cantElementosMetodo);
+
+		matrizAdyacencia.agregarElemento(2, 0);
+		matrizAdyacencia.agregarElemento(1, 2);
+		matrizAdyacencia.agregarElemento(0, 1);
+		
+		assertEquals(3, matrizAdyacencia.getCantidadElementos());
 	}
 	
 	
